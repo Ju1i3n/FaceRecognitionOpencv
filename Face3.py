@@ -1,0 +1,38 @@
+import numpy as np
+import cv2
+from cv2 import *
+
+vidFile = cv2.VideoCapture( 0 )
+face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+eye_cascade = cv2.CascadeClassifier('haarcascade_eye.xml')
+
+waitPerFrameInMillisec = int( 1000/25 )
+
+ok=True
+
+while ok:
+  ok, img = vidFile.read()
+  if ok:
+	  gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+	  faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+	  if len(faces) > 0:
+		  print "rhaaa y'a un visage"
+	  if not len(faces) == 0:
+		namedWindow("cam-test",CV_WINDOW_AUTOSIZE)
+		imshow("cam-test",img)
+		waitKey(0)
+		destroyWindow("cam-test")
+		imwrite("filename.jpg",img) #save image
+	  for (x,y,w,h) in faces:
+			cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+			roi_gray = gray[y:y+h, x:x+w]
+			roi_color = img[y:y+h, x:x+w]
+			eyes = eye_cascade.detectMultiScale(roi_gray)
+			for (ex,ey,ew,eh) in eyes:
+				cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)
+	  
+	  cv2.imshow('img',img)
+  ok = cv2.waitKey( waitPerFrameInMillisec  ) < 0
+
+		
+cv2.destroyAllWindows()
