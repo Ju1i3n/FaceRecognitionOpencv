@@ -16,15 +16,15 @@ while ok:
 	  gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 	  visages = face_cascade.detectMultiScale(gray, 1.3, 5)
 	  if len(visages) > 0:
-		  print "rhaaa y'a un visage"
+		  print "visage détecté, auto-destruction initiée, laideur détectée"
 	  if not len(visages) == 0:
 		namedWindow("cam-test",CV_WINDOW_AUTOSIZE)
 		imshow("cam-test",img)
 		waitKey(0)
 		destroyWindow("cam-test")
-		imwrite("filename.jpg",img) #save image
+		imwrite("filename.jpg",img) #sauvegarder image
 	  for (x,y,w,h) in visages:
-			cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+			cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)   #rectangles autour yeux + visages
 			roi_gray = gray[y:y+h, x:x+w]
 			roi_color = img[y:y+h, x:x+w]
 			yeux = eye_cascade.detectMultiScale(roi_gray)
