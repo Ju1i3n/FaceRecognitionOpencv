@@ -32,7 +32,7 @@ while ok:
 				cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)
 	  
 	  cv2.imshow('img',img)
-  ok = cv2.waitKey( waitPerFrameInMillisec  ) < 0
+  ok = cv2.waitKey( waitPerFrameInMillisec  ) < 0   # à l'appui d'une touche, fermer les fenêtres
 
 		
 cv2.destroyAllWindows()
