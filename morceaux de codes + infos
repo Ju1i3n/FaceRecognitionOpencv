@@ -59,3 +59,11 @@ def sendemail(from_addr, to_addr_list, cc_addr_list,
           message      = 'Howdy from a python function', 
           login        = 'pythonuser', 
           password     = 'XXXXX')
+
+
+
+
+
+IPv4 : Les adresses IPv4 sont dites publiques si elles sont enregistrées et routables sur
+Internet, elles sont donc uniques mondialement. À l'inverse, les adresses privées ne sont
+utilisables que dans un réseau local, et ne doivent être uniques que dans ce réseau.
