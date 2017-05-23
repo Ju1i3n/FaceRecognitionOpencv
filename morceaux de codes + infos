@@ -2,27 +2,29 @@
 datetime.datetime.now #permet de dater en YYYY-MM-DD hh:mm:ss.microseconds
 
 § MAIL § (1ere option)
-# Import smtplib for the actual sending function
+# Import smtplib for the actual sending function/Importe la bibliothèque smtplib afin de profiter des fonctions d'envoi
 import smtplib
 
-# Import the email modules we'll need
+# Import the email modules we'll need/Importe le module gérant les e-mails don't on se sert
 from email.mime.text import MIMEText
 
 # Open a plain text file for reading.  For this example, assume that
-# the text file contains only ASCII characters.
+# the text file contains only ASCII characters./Importe un fichier texte vide qui sera lu. 
+#On admet qu'il ne contient que des caractères ASCII
+#(codage de tout les caractères utile pour écrire un texte afin qu'il soit compréhensible pour l'ordinateur(exemple:H=72 en ASCII)
 fp = open(textfile, 'rb')
 # Create a text/plain message
 msg = MIMEText(fp.read())
 fp.close()
 
-# me == the sender's email address
-# you == the recipient's email address
+# me == the sender's email address/l'envoyeur du message
+# you == the recipient's email address/le receveur du message
 msg['Subject'] = 'The contents of %s' % textfile
 msg['From'] = me
 msg['To'] = you
 
 # Send the message via our own SMTP server, but don't include the
-# envelope header.
+# envelope header./envoi du message via son propre serveur SMTP, n'inclut pas l'endroit d'ou l'envoi est fait. 
 s = smtplib.SMTP('localhost')
 s.sendmail(me, [you], msg.as_string())
 s.quit()
