@@ -17,7 +17,7 @@ while ok:
 	  gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 	  visages = face_cascade.detectMultiScale(gray, 1.3, 5)
 	  if len(visages) > 0:
-		  print "visage détecté, auto-destruction initiée, trop de laideur détectée"
+		  print "visage détecté"
 	  if not len(visages) == 0:
 		namedWindow("cam-test",CV_WINDOW_AUTOSIZE)
 		imshow("cam-test",img)
