@@ -37,25 +37,3 @@ while ok:
 
 		
 cv2.destroyAllWindows()
-
- '''if len(visages) > 0
-	def sendemail('michaelmaregrande1234568gmail.com','yamoxrochi@gmail.com', cc_addr_list,
-              	'sécurité nom du logiciel', 'un individu a récemment été repéré',
-             	 login, password,
-             	 smtpserver='smtp.gmail.com:587'):
-   	 header  = 'From: %s
-	' % from_addr
-    header += 'To: %s
-	' % ','.join(to_addr_list)
-    header += 'Cc: %s
-	' % ','.join(cc_addr_list)
-    header += 'Subject: %s
-
-	' % subject
-    message = header + message
- 
-    server = smtplib.SMTP(smtpserver)
-    server.starttls()
-    server.login(login,password)
-    problems = server.sendmail(michaelmaregrande1234568gmail.com, yamoxrochi@gmail.com, un individu a récemment été repéré)
-    server.quit()''' 
