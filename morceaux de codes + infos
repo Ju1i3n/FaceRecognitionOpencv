@@ -1,67 +1,6 @@
 § DATE §
 datetime.datetime.now #permet de dater en YYYY-MM-DD hh:mm:ss.microseconds
 
-§ MAIL § (1ere option)
-# Import smtplib for the actual sending function
-import smtplib
-
-# Import the email modules we'll need
-from email.mime.text import MIMEText
-
-# Open a plain text file for reading.  For this example, assume that
-# the text file contains only ASCII characters.
-fp = open(textfile, 'rb')
-# Create a text/plain message
-msg = MIMEText(fp.read())
-fp.close()
-
-# me == the sender's email address
-# you == the recipient's email address
-msg['Subject'] = 'The contents of %s' % textfile
-msg['From'] = me
-msg['To'] = you
-
-# Send the message via our own SMTP server, but don't include the
-# envelope header.
-s = smtplib.SMTP('localhost')
-s.sendmail(me, [you], msg.as_string())
-s.quit()
-
-(2eme option)
-import smtplib
- 
-def sendemail(from_addr, to_addr_list, cc_addr_list,
-              subject, message,
-              login, password,
-              smtpserver='smtp.gmail.com:587'):
-    header  = 'From: %s
-' % from_addr
-    header += 'To: %s
-' % ','.join(to_addr_list)
-    header += 'Cc: %s
-' % ','.join(cc_addr_list)
-    header += 'Subject: %s
-
-' % subject
-    message = header + message
- 
-    server = smtplib.SMTP(smtpserver)
-    server.starttls()
-    server.login(login,password)
-    problems = server.sendmail(from_addr, to_addr_list, message)
-    server.quit()
-    
-   (EXEMPLE POUR 2EME OPTION)
-   sendemail(from_addr    = 'python@RC.net', 
-          to_addr_list = ['RC@gmail.com'],
-          cc_addr_list = ['RC@xx.co.uk'], 
-          subject      = 'Howdy', 
-          message      = 'Howdy from a python function', 
-          login        = 'pythonuser', 
-          password     = 'XXXXX')
-
-
-
 
 
 IPv4 : Les adresses IPv4 sont dites publiques si elles sont enregistrées et routables sur
